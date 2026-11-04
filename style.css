@@ -466,7 +466,7 @@ body {
   #sluzby .petexpert { font-size: 22px; }
 }
 
-/* Nativní prezentační navigace; zapíná se jen při dostatku místa. */
+/* Tečky fungují na desktopu i bez přichytávání; snapping vyžaduje dostatek místa. */
 html.services-navigation { scroll-padding-top: var(--services-snap-top, 90px); }
 html.services-snap-enabled { scroll-snap-type: y proximity; }
 .services-snap-enabled #sluzby .service-row {
@@ -500,13 +500,14 @@ html.services-snap-enabled { scroll-snap-type: y proximity; }
 .section-dots a:hover,
 .section-dots a[aria-current="location"] { color: var(--wine); text-decoration: none; }
 .section-dot {
-  width: 6px;
-  height: 6px;
+  width: 9px;
+  height: 9px;
   border: 1px solid currentColor;
   border-radius: 50%;
-  opacity: .65;
+  opacity: .85;
   transition: background-color .18s, opacity .18s;
 }
+.section-dots.at-viewport-edge .section-dot { width: 6px; height: 6px; }
 .section-dots a:hover .section-dot,
 .section-dots a[aria-current="location"] .section-dot { background: currentColor; opacity: 1; }
 .section-dots a:focus-visible { outline: none; }

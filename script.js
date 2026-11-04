@@ -15,7 +15,8 @@ if (services) {
   const dots = document.querySelector('.section-dots');
   const dotLinks = dots ? [...dots.querySelectorAll('a')] : [];
   const root = document.documentElement;
-  const desktop = matchMedia('(min-width: 1024px) and (hover: hover) and (pointer: fine)');
+  const desktop = matchMedia('(min-width: 1024px)');
+  const precisePointer = matchMedia('(hover: hover) and (pointer: fine)');
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   let layoutFrame = 0;
   let scrollFrame = 0;
@@ -42,11 +43,12 @@ if (services) {
     if (!dots) return;
     const top = header.getBoundingClientRect().height;
     const available = innerHeight - top;
-    const fits = desktop.matches && sections.every(section => section.getBoundingClientRect().height <= available + 1);
+    const showDots = desktop.matches && available >= 132;
+    const fits = showDots && precisePointer.matches && sections.every(section => section.getBoundingClientRect().height <= available + 1);
     root.style.setProperty('--services-snap-top', `${top}px`);
-    root.classList.toggle('services-navigation', fits);
+    root.classList.toggle('services-navigation', showDots);
     root.classList.toggle('services-snap-enabled', fits && !reducedMotion.matches);
-    dots.hidden = !fits;
+    dots.hidden = !showDots;
     // Široké okno: vnější okraj. Užší desktop: tečky v prázdném pásu za ozdobnými nadpisy.
     const gutter = innerWidth - document.body.getBoundingClientRect().right;
     dots.classList.toggle('at-viewport-edge', gutter < 48);
@@ -75,6 +77,7 @@ if (services) {
     if (!scrollFrame && dots && !dots.hidden) scrollFrame = requestAnimationFrame(updateActiveDot);
   }, { passive: true });
   desktop.addEventListener('change', schedulePresentationUpdate);
+  precisePointer.addEventListener('change', schedulePresentationUpdate);
   reducedMotion.addEventListener('change', schedulePresentationUpdate);
   document.fonts.ready.then(updateHeaderHeight);
 }

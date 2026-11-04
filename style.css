@@ -594,3 +594,29 @@ html.services-snap-enabled { scroll-snap-type: y proximity; }
 @media (min-width: 1440px) {
   #kontakt .small-map { width: calc(100% + 50px); }
 }
+
+/* Mobilní pergamen navazuje zrcadlením původní textury, bez hran dlaždic. */
+@media (max-width: 760px) {
+  body:not(.page-services) { background-image: url('assets/images/pergamen-sluzby.svg'); }
+  #uvod .paper-panel, #kontakt .paper-panel { background: transparent; }
+
+  #kontakt .contact-row { gap: 28px; padding-bottom: 32px; }
+  #kontakt .contact-details { gap: 20px; }
+  #kontakt .small-map {
+    width: calc(100% + 16px);
+    max-width: none;
+    justify-self: center;
+  }
+  #kontakt .contact-copy > p { margin-block: 24px 0; }
+  #kontakt .contact-row .portrait {
+    width: min(82%, 300px);
+    aspect-ratio: auto;
+    height: auto;
+    object-fit: contain;
+  }
+  #kontakt .contact-row .signature {
+    position: static;
+    justify-self: end;
+    margin-right: 8px;
+  }
+}

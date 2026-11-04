@@ -516,3 +516,81 @@ html.services-snap-enabled { scroll-snap-type: y proximity; }
   html.services-navigation { scroll-behavior: auto; }
   .section-dot { transition: none; }
 }
+
+/* Závěrečné doladění: stejná dekorace jako u služeb a kontaktu. */
+#o-mne .about-row:first-of-type::before {
+  content: '';
+  position: absolute;
+  left: 48px;
+  top: 30px;
+  bottom: 30px;
+  width: 30px;
+  background: url('assets/icons/dekorace-svisla.svg') center / 100% 100% no-repeat;
+  pointer-events: none;
+}
+#o-mne .side-title { left: 12px; color: var(--wine); font-size: 34px; }
+
+/* Logo má vlastní volný prostor pod fotografií, mimo její rám. */
+@media (min-width: 1024px) {
+  #sluzby .ruminants .signature { right: 7%; bottom: 32px; }
+}
+
+/* Kontakt: čitelnější mapa a kompaktní kompozice s přirozeným přetečením. */
+@media (min-width: 1101px) {
+  #kontakt .contact-row {
+    min-height: calc(100svh - 90px);
+    padding-block: 24px 134px;
+    align-items: center;
+  }
+  #kontakt .contact-details { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); }
+  #kontakt .contact-row .portrait {
+    width: min(100%, 400px);
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 2 / 3;
+    justify-self: end;
+  }
+  #kontakt .contact-row .signature { right: 40%; bottom: 100px; }
+}
+@media (max-width: 760px) {
+  #o-mne .about-row:first-of-type::before { display: none; }
+  #o-mne .side-title { font-size: 28px; }
+}
+
+@media (min-width: 1024px) and (max-height: 850px) {
+  #sluzby .ruminants .signature { right: calc(7% + 380px + 32px); }
+}
+
+@media (min-width: 1101px) and (max-height: 850px) {
+  #kontakt .contact-row .signature { bottom: 24px; }
+}
+@media (min-width: 761px) and (max-width: 1100px) {
+  #kontakt .contact-row { padding-bottom: 134px; }
+}
+@media (min-width: 761px) and (max-width: 1023px) {
+  #sluzby .ruminants { padding-bottom: 142px; }
+}
+/* V užším okně nezůstává vedle textu místo pro celou ozdobnou linku. */
+@media (min-width: 761px) and (max-width: 1300px) {
+  #o-mne .about-row:first-of-type::before { display: none; }
+}
+@media (min-width: 761px) and (max-width: 1100px) {
+  #o-mne .side-title { font-size: 30px; }
+}
+@media (max-width: 760px) {
+  #kontakt .contact-row { gap: 24px; }
+}
+
+/* Kontakt: celé jméno na desktopu a o něco výraznější mapa. */
+@media (min-width: 761px) {
+  #kontakt .social-contact > .contact-item:first-child > span { white-space: nowrap; }
+}
+@media (min-width: 1101px) {
+  #kontakt .contact-details {
+    grid-template-columns: minmax(355px, .95fr) minmax(0, 1.05fr);
+    column-gap: 20px;
+  }
+}
+@media (min-width: 1440px) {
+  #kontakt .small-map { width: calc(100% + 50px); }
+}

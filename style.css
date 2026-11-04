@@ -295,3 +295,103 @@ body {
   #sluzby .petexpert p { flex: 1 1 190px; }
   #kontakt .contact-copy > p { font-size: 20px; }
 }
+
+/* Kompozice Canvy: vysoké rámy služeb s individuálním ořezem. */
+#sluzby .service-photo,
+#sluzby .service-reverse .service-photo,
+#sluzby .ruminants .service-photo {
+  width: min(100%, 43vw, 620px);
+  height: clamp(460px, 58vw, 840px);
+  object-fit: cover;
+  justify-self: end;
+  mask-image: linear-gradient(to bottom, transparent, #000 2%, #000 98%, transparent);
+  mask-size: 100% 100%;
+}
+#sluzby .service-row:not(.service-reverse):not(.ruminants) .service-photo { object-position: 27% center; }
+#sluzby .service-reverse .service-photo { object-position: 43% center; justify-self: start; }
+#sluzby .ruminants .service-photo { object-position: 74% center; }
+#sluzby .service-lists li { overflow-wrap: break-word; }
+
+/* Kompaktní oddíly O mně bez změny velikosti fotografií. */
+#o-mne .about-row { padding-top: 12px; padding-bottom: 12px; }
+#o-mne .about-copy { font-size: 18px; line-height: 1.38; }
+#o-mne .about-copy p { margin-bottom: .7em; }
+#o-mne .about-second { padding-bottom: 32px; }
+#o-mne .about-second .about-copy { font-size: 18px; line-height: 1.4; text-align: right; }
+#o-mne .about-second .about-copy p { margin-bottom: .85em; }
+#o-mne .about-copy p:last-child,
+#o-mne .about-second .about-copy p:last-child { margin-bottom: 0; }
+
+@media (min-width: 761px) and (max-width: 1100px) {
+  #o-mne .about-second { padding-bottom: 110px; }
+}
+@media (max-width: 760px) {
+  #sluzby .service-photo,
+  #sluzby .service-reverse .service-photo,
+  #sluzby .ruminants .service-photo {
+    width: min(100%, 520px);
+    height: auto;
+    aspect-ratio: 3 / 4;
+    justify-self: center;
+  }
+  #o-mne .about-row { padding-top: 35px; padding-bottom: 35px; }
+  #o-mne .about-copy, #o-mne .about-second .about-copy { font-size: 22px; line-height: 1.5; }
+  #o-mne .about-copy p, #o-mne .about-second .about-copy p { margin-bottom: .9em; }
+  #o-mne .about-copy p:last-child, #o-mne .about-second .about-copy p:last-child { margin-bottom: 0; }
+  #o-mne .about-second { padding-bottom: 110px; }
+}
+
+/* Vyvážení textu a fotografie; bez omezení na výšku obrazovky. */
+#o-mne .about-row { padding-top: 28px; padding-bottom: 28px; }
+#o-mne .about-copy { font-size: 24px; line-height: 1.42; }
+#o-mne .about-copy p { margin-bottom: .8em; }
+#o-mne .about-second { padding-bottom: 100px; }
+#o-mne .about-second .about-copy { font-size: 24px; line-height: 1.44; text-align: right; }
+#o-mne .about-second .about-copy p { margin-bottom: .9em; }
+#o-mne .about-copy p:last-child,
+#o-mne .about-second .about-copy p:last-child { margin-bottom: 0; }
+#o-mne .portrait { height: clamp(420px, 38vw, 540px); aspect-ratio: auto; object-position: center 60%; }
+#o-mne .about-second .portrait { height: clamp(400px, 34vw, 490px); object-position: center; }
+
+.page-services { background-image: url('assets/images/pergamen-sluzby.svg'); }
+#sluzby .service-row { min-height: 0; }
+#sluzby .service-photo,
+#sluzby .service-reverse .service-photo,
+#sluzby .ruminants .service-photo {
+  height: 100%;
+  min-height: 0;
+  contain: size;
+  align-self: stretch;
+}
+#sluzby .service-reverse .puppy-photo {
+  position: relative;
+  overflow: hidden;
+  height: calc(100% + 180px);
+  margin-block: -90px;
+}
+#sluzby .puppy-photo-image {
+  position: absolute;
+  inset: 0 auto 0 -69.74%;
+  width: 263.16%;
+  max-width: none;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 65%;
+}
+@media (min-width: 761px) and (max-width: 1100px) {
+  #o-mne .about-copy, #o-mne .about-second .about-copy { font-size: 23px; }
+}
+@media (max-width: 760px) {
+  #o-mne .about-row { padding-top: 35px; padding-bottom: 35px; }
+  #o-mne .about-copy, #o-mne .about-second .about-copy { font-size: 22px; line-height: 1.5; }
+  #o-mne .portrait, #o-mne .about-second .portrait { height: auto; aspect-ratio: 2 / 3; }
+  #o-mne .about-second { padding-bottom: 110px; }
+  #sluzby .service-photo,
+  #sluzby .service-reverse .service-photo,
+  #sluzby .ruminants .service-photo {
+    contain: none;
+    height: auto;
+    align-self: auto;
+  }
+  #sluzby .service-reverse .puppy-photo { aspect-ratio: 3 / 4; height: auto; margin-block: 0; }
+}

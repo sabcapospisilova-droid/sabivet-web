@@ -395,3 +395,73 @@ body {
   }
   #sluzby .service-reverse .puppy-photo { aspect-ratio: 3 / 4; height: auto; margin-block: 0; }
 }
+
+/* Služby: obsah má přednost, fotografie jsou menší doprovodné prvky. */
+#sluzby .service-lists { font-size: 22px; line-height: 1.28; column-gap: 22px; }
+#sluzby .service-lists h4 { margin-bottom: .12em; }
+#sluzby .service-lists ul { margin-bottom: .35em; }
+#sluzby .petexpert { margin-top: 20px; line-height: 1.35; }
+#sluzby .service-photo,
+#sluzby .service-reverse .service-photo,
+#sluzby .ruminants .service-photo {
+  width: min(100%, 380px);
+  height: auto;
+  aspect-ratio: 3 / 4;
+  contain: none;
+  align-self: center;
+}
+#sluzby .service-reverse .puppy-photo {
+  /* Poměr schváleného rámu při 1366 px zachovává tentýž výřez při zmenšení. */
+  aspect-ratio: 587.375 / 717.65625;
+  margin-block: 0;
+}
+
+@media (min-width: 1024px) {
+  #sluzby {
+    --services-header-height: 90px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-auto-rows: 1fr;
+  }
+  #sluzby .service-row {
+    min-height: calc(100vh - var(--services-header-height));
+    min-height: calc(100svh - var(--services-header-height));
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, .85fr);
+    padding-block: 24px;
+    gap: 3%;
+  }
+  #sluzby .service-reverse {
+    grid-template-columns: minmax(0, .85fr) minmax(0, 1.35fr);
+  }
+  #sluzby .service-lists { font-size: clamp(20px, 1.5vw, 22px); line-height: 1.24; }
+}
+@media (max-width: 1023px) {
+  #sluzby { display: block; }
+  #sluzby .service-row, #sluzby .service-reverse {
+    min-height: 0;
+    grid-template-columns: minmax(0, 1fr);
+    padding-block: 32px;
+    gap: 24px;
+  }
+  #sluzby .side-title, #sluzby .service-reverse .side-title {
+    position: static;
+    writing-mode: horizontal-tb;
+    transform: none;
+  }
+  #sluzby .service-row::before { display: none; }
+  #sluzby .service-photo,
+  #sluzby .service-reverse .service-photo,
+  #sluzby .ruminants .service-photo { justify-self: center; }
+  #sluzby .service-reverse .puppy-photo { grid-row: 3; }
+  #sluzby .ruminants { padding-bottom: 110px; }
+}
+
+/* Mírné zvětšení prvních dvou kategorií v rámci jedné desktopové obrazovky. */
+@media (min-width: 1024px) {
+  #sluzby .service-row:not(.ruminants) .service-lists {
+    font-size: clamp(20px, 1.65vw, 24px);
+    line-height: 1.28;
+  }
+  #sluzby .service-row:not(.ruminants) .service-photo { width: min(100%, 420px); }
+  #sluzby .petexpert { font-size: 22px; }
+}

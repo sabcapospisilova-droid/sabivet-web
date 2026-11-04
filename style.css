@@ -465,3 +465,53 @@ body {
   #sluzby .service-row:not(.ruminants) .service-photo { width: min(100%, 420px); }
   #sluzby .petexpert { font-size: 22px; }
 }
+
+/* Nativní prezentační navigace; zapíná se jen při dostatku místa. */
+html.services-navigation { scroll-padding-top: var(--services-snap-top, 90px); }
+html.services-snap-enabled { scroll-snap-type: y proximity; }
+.services-snap-enabled #sluzby .service-row {
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+}
+.section-dots {
+  position: fixed;
+  right: var(--dots-right, 0px);
+  top: var(--dots-top, 50%);
+  transform: translateY(-50%);
+  width: 28px;
+  gap: 6px;
+  z-index: 9;
+}
+.section-dots[hidden] { display: none; }
+.section-dots:not([hidden]) { display: grid; }
+.section-dots a {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--wine);
+  text-decoration: none;
+}
+.section-dots.at-viewport-edge a { justify-items: end; padding-right: 3px; }
+.section-dots a:hover,
+.section-dots a[aria-current="location"] { color: var(--wine); text-decoration: none; }
+.section-dot {
+  width: 6px;
+  height: 6px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  opacity: .65;
+  transition: background-color .18s, opacity .18s;
+}
+.section-dots a:hover .section-dot,
+.section-dots a[aria-current="location"] .section-dot { background: currentColor; opacity: 1; }
+.section-dots a:focus-visible { outline: none; }
+.section-dots a:focus-visible .section-dot { outline: 2px solid var(--wine); outline-offset: 1px; opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  html.services-navigation { scroll-behavior: auto; }
+  .section-dot { transition: none; }
+}

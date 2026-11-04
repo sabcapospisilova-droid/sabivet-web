@@ -173,3 +173,66 @@ address .contact-item > span { min-width: 0; }
   .hero-location .location-line, .hero-location .travel-line { justify-content: center; }
   .service-row::before, .contact-row::before { display: none; }
 }
+
+/* Revize: čtyři samostatné stránky, bez opakovaných švů pergamenu. */
+body { background: var(--paper) url('assets/images/pergamen.png') center top / cover fixed no-repeat; min-height: 100vh; }
+.paper-panel { background: rgba(255,255,255,.12); }
+.site-header { background: #e7e1d7; box-shadow: 0 2px 12px #3a292010; }
+nav a[aria-current="page"] { text-decoration: underline; text-underline-offset: .19em; }
+nav a:not([aria-current]) { text-decoration: none; }
+nav a:not([aria-current]):hover { text-decoration: underline; }
+main { min-height: calc(100vh - 110px); }
+.hero-photo { image-rendering: auto; }
+.portrait, .service-photo { object-fit: cover; border-radius: 3px; }
+.service-photo { aspect-ratio: 4 / 3; height: auto; }
+@media(max-width:760px) { body { background-size: cover; background-attachment: scroll; } .service-photo { aspect-ratio: 4 / 3; height: auto; } }
+
+/* Služby: jednotný pergamen bez ostrých horizontálních hranic mezi bloky. */
+#sluzby,
+#sluzby .service-row,
+#sluzby .service-row.paper-panel {
+  background: transparent;
+  background-image: none;
+  box-shadow: none;
+}
+#sluzby .service-row + .service-row {
+  border-top: 0;
+}
+
+/* O mně: souvislé pozadí bez švů mezi oběma částmi. */
+#o-mne,
+#o-mne .about-row,
+#o-mne .about-row.paper-panel {
+  background: transparent;
+  background-image: none;
+  box-shadow: none;
+}
+#o-mne .about-row + .about-row {
+  border-top: 0;
+}
+
+/* Doladění: výraznější pergamenová textura a velké fotografie služeb. */
+body {
+  background-image: url('assets/images/pergamen.png');
+  background-position: center top;
+  background-size: 100% auto;
+  background-repeat: repeat-y;
+  background-attachment: scroll;
+}
+/* Obsah nemá vlastní vybledlou vrstvu; textura zůstává vidět. */
+#sluzby .service-row, #o-mne .about-row { background: transparent; }
+.service-row:not(.service-reverse) {
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: 3%;
+}
+.service-photo {
+  width: 100%;
+  height: clamp(410px, 34vw, 540px);
+  aspect-ratio: auto;
+  object-fit: cover;
+}
+@media (max-width: 760px) {
+  .service-row:not(.service-reverse) { grid-template-columns: 1fr; }
+  .service-photo { width: min(100%, 520px); height: 400px; aspect-ratio: auto; }
+}
+@media (max-width: 430px) { .service-photo { height: 330px; } }

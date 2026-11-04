@@ -40,3 +40,7 @@ Při změně obrázků zachovejte názvy, nebo upravte cestu v HTML/CSS. Při zm
 ## Budoucí práce v cloudu
 
 Použijte existující checkout `/workspace/sabivet-web`. Úloha je již izolovaná; nevytvářejte další Git worktree, pokud o něj uživatel výslovně nepožádá. Není nutný instalační příkaz. Živé procesy nemusí po obnovení prostředí přežít; místní server případně spusťte uvedeným příkazem. Nevytvářejte veřejné nasazení bez pokynu uživatele.
+
+
+## Upravená verze (listopad 2026)
+Web je rozdělen do čtyř stránek: index.html, o-mne.html, sluzby.html, kontakt.html. Otevírejte index.html ze **zcela rozbalené** složky, ne přímo ze ZIPu. Všechny soubory assets musí zůstat vedle HTML. Úvodní obrázek uvod.png má pouze 800 × 532 px; pro vyšší ostrost jej nahraďte originálem ve větším rozlišení při zachování názvu. Velká mapa odstraněna, malá odkazuje na původní Google Mapy.

@@ -620,3 +620,10 @@ html.services-snap-enabled { scroll-snap-type: y proximity; }
     margin-right: 8px;
   }
 }
+
+/* Identifikační údaje navazují pod kontaktní kompozicí, bez posunu jejích prvků. */
+#kontakt .identification { padding: 24px 6% 40px; font-size: 18px; line-height: 1.5; text-align: center; color: #4f4045; }
+#kontakt .identification p { margin: 0; }
+@media (max-width: 760px) {
+  #kontakt .identification { padding-top: 12px; }
+}

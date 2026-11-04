@@ -248,3 +248,50 @@ body {
 }
 #sluzby .service-reverse .service-photo { mask-image: url('assets/masks/sluzby-psi.svg'); }
 #sluzby .ruminants .service-photo { mask-image: url('assets/masks/sluzby-prezvykavci.svg'); }
+
+/* Doladění vnitřních stránek; pravidla úvodu a záhlaví zůstávají původní. */
+#o-mne .about-copy {
+  font-size: clamp(18px, 1.85vw, 26px);
+  line-height: 1.5;
+  text-align: left;
+}
+#o-mne .about-copy p { margin-bottom: 1.2em; }
+#o-mne .about-copy p:last-child { margin-bottom: 0; }
+#o-mne .about-second .about-copy {
+  font-size: clamp(18px, 1.72vw, 24.6px);
+  text-align: center;
+}
+#o-mne .about-second .about-copy p { margin-bottom: 1.4em; }
+#o-mne .about-second .about-copy p:last-child { margin-bottom: 0; }
+
+#sluzby .service-row {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: 3%;
+}
+#sluzby .service-reverse {
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+}
+#sluzby .service-lists, #sluzby .service-content, #sluzby .service-lists > div { min-width: 0; }
+#sluzby .service-photo {
+  width: 100%;
+  max-width: none;
+  height: auto;
+  aspect-ratio: auto;
+}
+#sluzby .side-title { color: var(--wine); font-size: 34px; left: 12px; }
+#sluzby .service-reverse .side-title { left: auto; right: 12px; }
+#sluzby .service-lists h4 { font-weight: 700; }
+#sluzby .petexpert > a { flex: 0 0 120px; }
+#sluzby .petexpert img { width: 120px; height: 120px; }
+
+#kontakt address > a[href^="tel:"] { color: var(--wine); font-size: 1.12em; font-weight: 600; }
+#kontakt .contact-copy > p { font-size: clamp(17px, 1.77vw, 24.6px); line-height: 1.5; }
+
+@media (max-width: 760px) {
+  #o-mne .about-copy, #o-mne .about-second .about-copy { font-size: 22px; }
+  #sluzby .service-row, #sluzby .service-reverse { grid-template-columns: minmax(0, 1fr); gap: 25px; }
+  #sluzby .side-title { font-size: 30px; }
+  #sluzby .petexpert { flex-wrap: wrap; }
+  #sluzby .petexpert p { flex: 1 1 190px; }
+  #kontakt .contact-copy > p { font-size: 20px; }
+}
